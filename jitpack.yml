@@ -1,0 +1,7 @@
+jdk:
+  - openjdk17
+before_install:
+  - sdk install gradle 8.14 || true
+install:
+  - gradle clean build publishToMavenLocal -x test
+  

@@ -1,30 +1,13 @@
 plugins {
-    kotlin("jvm") version "1.5.30"
-    `maven-publish`
+    kotlin("jvm") version "2.3.0" apply false
 }
 
 allprojects {
-    group = "com.example"
-    version = "0.1.0"
-}
+    group = "com.github.nullij"  // JitPack requires com.github.<your-github-username>
+    version = "1.0.0"
 
-subprojects {
-    apply(plugin = "maven-publish")
-
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                from(components["java"])
-            }
-        }
-        repositories {
-            maven {
-                url = uri("https://my.repository.url")
-            }
-        }
-    }
-    tasks.withType<JavaCompile> {
-        sourceCompatibility = "11"
-        targetCompatibility = "11"
+    repositories {
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
