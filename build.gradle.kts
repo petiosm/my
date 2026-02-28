@@ -1,1 +1,57 @@
-// Build configuration for multi-module publishing\nplugins {\n    `maven-publish`\n} \n\n// Definition for all submodules\nallprojects {\n    group = "com.example"\n    version = "1.0.0"\n    repositories {\n        mavenCentral()\n    }\n} \n\n// Configuration for publishing\nsubprojects {\n    publishing {\n        publications {\n            create<MavenPublication>("mavenJava") {\n                from(components["java"])\n            }\n        }\n        repositories {\n            maven {\n                url = uri("https://your.repository.url")\n            }\n        }\n    }\n}
+plugins {
+    id("java-library")
+    id("maven-publish")
+}
+
+allprojects {
+    group = "com.github.petiosm"
+    version = "1.0.0"
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply(plugin = "java-library")
+    apply(plugin = "maven-publish")
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    publishing {
+        publications {
+            register<MavenPublication>("mavenJava") {
+                from(components["java"])
+
+                pom {
+                    name.set(project.name)
+                    description.set("Multi-module project with Gradle plugin and runtime")
+                    url.set("https://github.com/petiosm/my")
+
+                    licenses {
+                        license {
+                            name.set("MIT License")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id.set("petiosm")
+                            name.set("Petiosm")
+                        }
+                    }
+
+                    scm {
+                        connection.set("scm:git:https://github.com/petiosm/my.git")
+                        developerConnection.set("scm:git:https://github.com/petiosm/my.git")
+                        url.set("https://github.com/petiosm/my")
+                    }
+                }
+            }
+        }
+    }
+}
