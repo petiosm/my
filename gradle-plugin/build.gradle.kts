@@ -1,27 +1,15 @@
-plugins { 
-    `java-gradle-plugin` 
+plugins {
+    id("maven-publish")
 }
 
-repositories { 
-    mavenCentral() 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.example"
+            artifactId = "my-plugin"
+            version = "1.0.0"
+
+            from(components["java"])
+        }
+    }
 }
-
-gradlePlugin { 
-    plugins { 
-        create("myPlugin") { 
-            id = "com.example.myplugin" 
-            implementationClass = "com.example.MyPlugin" 
-        } 
-    } 
-} 
-
-publishing { 
-    publications { 
-        create<MavenPublication>("pluginMaven") { 
-            from(components["java"]) 
-            groupId = "com.example" 
-            artifactId = "myplugin" 
-            version = "1.0.0" 
-        } 
-    } 
-} 
