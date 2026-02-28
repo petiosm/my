@@ -1,20 +1,7 @@
 plugins {
-    kotlin("jvm") version "2.3.0"
-    `maven-publish`
+    `java-library`
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-kotlin {
-    jvmToolchain(17)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
-        }
-    }
+task test(type: Test) {
+    useJUnitPlatform()
 }
