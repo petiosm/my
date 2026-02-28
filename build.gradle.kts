@@ -1,13 +1,1 @@
-plugins {
-    kotlin("jvm") version "2.3.0" apply false
-}
-
-allprojects {
-    group = "io.github.nullij.ktobfuscate"
-    version = "1.0.0"
-
-    repositories {
-        mavenCentral()
-        maven { url = uri("https://jitpack.io") }
-    }
-}
+// Build configuration for multi-module publishing\nplugins {\n    `maven-publish`\n} \n\n// Definition for all submodules\nallprojects {\n    group = "com.example"\n    version = "1.0.0"\n    repositories {\n        mavenCentral()\n    }\n} \n\n// Configuration for publishing\nsubprojects {\n    publishing {\n        publications {\n            create<MavenPublication>("mavenJava") {\n                from(components["java"])\n            }\n        }\n        repositories {\n            maven {\n                url = uri("https://your.repository.url")\n            }\n        }\n    }\n}
