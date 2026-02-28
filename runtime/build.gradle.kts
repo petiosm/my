@@ -1,7 +1,4 @@
 plugins {
-    `java-library`
-}
-
-task test(type: Test) {
-    useJUnitPlatform()
+    id("maven-publish")
+    id("java-library")
 }
