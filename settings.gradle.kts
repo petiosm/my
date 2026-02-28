@@ -1,5 +1,5 @@
-rootProject.name = "ktobfuscate"
-
-include(":runtime")
-include(":kotlin-plugin")
-include(":gradle-plugin")
+rootProject.name = "MyProject"
+include("gradle-plugin")
+include("kotlin-plugin")
+include("runtime")
+include("lib")
