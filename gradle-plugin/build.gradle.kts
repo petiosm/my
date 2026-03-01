@@ -26,7 +26,7 @@ kotlin {
 gradlePlugin {
     plugins {
         create("ktObfuscate") {
-            id                  = "io.github.nullij.ktobfuscate"
+            id                  = "com.github.petiosm.ktobfuscate"
             implementationClass = "io.github.nullij.ktobfuscate.gradle.KtObfuscateGradlePlugin"
             displayName         = "KtObfuscate"
             description         = "Kotlin compiler plugin that obfuscates strings, method names, and fields in bytecode"
