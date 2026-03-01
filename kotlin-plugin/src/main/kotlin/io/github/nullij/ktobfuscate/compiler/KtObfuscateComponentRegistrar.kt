@@ -12,7 +12,7 @@ import org.jetbrains.kotlin.config.CompilerConfigurationKey
 @OptIn(ExperimentalCompilerApi::class)
 class KtObfuscateComponentRegistrar : CompilerPluginRegistrar() {
 
-    override val pluginId: String = "io.github.nullij.ktobfuscate"
+    override val pluginId: String = KtObfuscateKeys.PLUGIN_ID
 
     override val supportsK2: Boolean = true
 

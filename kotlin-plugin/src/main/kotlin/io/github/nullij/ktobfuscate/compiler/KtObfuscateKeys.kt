@@ -1,7 +1,7 @@
 package io.github.nullij.ktobfuscate.compiler
 
 object KtObfuscateKeys {
-    const val PLUGIN_ID = "io.github.nullij.ktobfuscate"
+    const val PLUGIN_ID = "com.github.petiosm.ktobfuscate"
 
     // CLI option keys passed from Gradle plugin → compiler plugin
     const val KEY_ENABLED         = "enabled"
