@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "2.0.21" apply false
+    kotlin("jvm") version "2.3.0" apply false  // ✅ must match libs.versions.toml
 }
 
 allprojects {
-    group = "com.github.petiosm"   // MUST match your GitHub username exactly
+    group = "com.github.petiosm"
     version = "1.0.0"
 
     repositories {
