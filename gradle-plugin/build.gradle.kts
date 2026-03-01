@@ -35,12 +35,3 @@ gradlePlugin {
         }
     }
 }
-
-// java-gradle-plugin auto-creates "pluginMaven" publication + marker publications.
-// We just need to set coordinates — do NOT create a "release" publication.
-publishing {
-    publications.withType<MavenPublication> {
-        // Inherit group/version from root allprojects block — nothing extra needed.
-        // JitPack will find "pluginMaven" and the plugin marker automatically.
-    }
-}
