@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.3.0" apply false  // ✅ must match libs.versions.toml
+    alias(libs.plugins.kotlin.jvm) apply false  // version comes from libs.versions.toml
 }
 
 allprojects {
