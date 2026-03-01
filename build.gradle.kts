@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "2.3.0" apply false
+    kotlin("jvm") version "2.0.21" apply false
 }
 
 allprojects {
-    group = "com.github.nullij"  // JitPack requires com.github.<your-github-username>
+    group = "com.github.petiosm"   // MUST match your GitHub username exactly
     version = "1.0.0"
 
     repositories {

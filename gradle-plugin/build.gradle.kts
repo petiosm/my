@@ -1,5 +1,7 @@
+// this is gradle-plugin
+
 plugins {
-    kotlin("jvm")
+    kotlin("jvm")           // version inherited from root
     `java-gradle-plugin`
     `maven-publish`
 }
@@ -34,29 +36,11 @@ gradlePlugin {
     }
 }
 
-// publishing {
-    // publications {
-        // // java-gradle-plugin auto-creates a "pluginMaven" publication for the jar
-        // // and a marker publication per plugin ID — both are needed for JitPack.
-        // // No extra configuration required; they inherit group/version from the root.
-    // }
-
-    // repositories {
-        // // JitPack builds in CI and reads from the local Maven repo,
-        // // so no extra repository block is needed here.
-    // }
-// }
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                
-                groupId = "com.github.petiosm.my.ktobfuscate"
-                artifactId = "gradle-plugin"
-                version = "v002"
-            }
-        }
+// java-gradle-plugin auto-creates "pluginMaven" publication + marker publications.
+// We just need to set coordinates — do NOT create a "release" publication.
+publishing {
+    publications.withType<MavenPublication> {
+        // Inherit group/version from root allprojects block — nothing extra needed.
+        // JitPack will find "pluginMaven" and the plugin marker automatically.
     }
 }

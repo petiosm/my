@@ -1,18 +1,22 @@
+// this is kotlin-plugin
+
 plugins {
-    kotlin("jvm") version "2.3.0"
+    kotlin("jvm")           // version inherited from root
     `maven-publish`
 }
 
 dependencies {
     compileOnly(libs.kotlinc.embeddable)
-    // compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:2.3.0")
     testImplementation(kotlin("test"))
     testImplementation(libs.kotlinc.embeddable)
-    // testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:2.3.0")
 }
 
 kotlin {
     jvmToolchain(17)
+}
+
+java {
+    withSourcesJar()
 }
 
 // Fat jar so the compiler can load it as a plugin without classpath headaches
@@ -25,6 +29,9 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
+            groupId = project.group.toString()
+            artifactId = "kotlin-plugin"
+            version = project.version.toString()
         }
     }
 }
