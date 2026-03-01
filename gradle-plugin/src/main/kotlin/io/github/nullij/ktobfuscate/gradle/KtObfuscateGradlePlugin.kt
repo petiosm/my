@@ -52,9 +52,9 @@ class KtObfuscateGradlePlugin : KotlinCompilerPluginSupportPlugin {
      * When publishing to Maven, this must match the actual published coordinates.
      */
     override fun getPluginArtifact(): SubpluginArtifact = SubpluginArtifact(
-        groupId    = "io.github.nullij.ktobfuscate",
+        groupId    = "com.github.petiosm.my",
         artifactId = "kotlin-plugin",
-        version    = "1.0.0",
+        version    = javaClass.`package`.implementationVersion ?: "v007",
     )
 
     override fun applyToCompilation(
